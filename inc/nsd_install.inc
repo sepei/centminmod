@@ -37,6 +37,19 @@ fi
     cp $CUR_DIR/sysconfig/nsd nsd
     cd /etc/init.d/
     cp $CUR_DIR/init/nsd nsd
+
+# add check for Windows CLRF line endings
+if [ ! -f /usr/bin/file ]; then
+    yum -q -y install file
+fi
+if [[ $(file /etc/init.d/nsd) =~ CRLF && -f /etc/init.d/nsd ]]; then
+    if [ ! -f /usr/bin/dos2unix ]; then
+        yum -q -y install dos2unix
+    fi
+    echo "detected CRLF line endings converting to Unix LF"
+    dos2unix /etc/init.d/nsd
+fi
+    
     chmod +x /etc/init.d/nsd
     chkconfig --levels 235 nsd on
     echo "*************************************************"

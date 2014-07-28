@@ -218,6 +218,20 @@ fi # check if custom open file descriptor limits already exist
     echo ""
 
     cp $CUR_DIR/init/nginx /etc/init.d/nginx
+
+
+# add check for Windows CLRF line endings
+if [ ! -f /usr/bin/file ]; then
+    yum -q -y install file
+fi
+if [[ $(file /etc/init.d/nginx) =~ CRLF && -f /etc/init.d/nginx ]]; then
+    if [ ! -f /usr/bin/dos2unix ]; then
+        yum -q -y install dos2unix
+    fi
+    echo "detected CRLF line endings converting to Unix LF"
+    dos2unix /etc/init.d/nginx
+fi
+
     chmod +x /etc/init.d/nginx
     chkconfig --levels 235 nginx on
 
