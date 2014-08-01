@@ -263,11 +263,7 @@ then
 
 fi
 
-if [ "$NGINX_OPENRESTY" == 'y' ]; then
-funct_nginxmodules_openresty
-else
 funct_nginxmodules
-fi
 
     # Install nginx
     cd $DIR_TMP
