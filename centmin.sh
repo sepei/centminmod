@@ -276,6 +276,10 @@ SIEGE_VERSION='3.0.6'
 
 WGETOPT='-cnv --no-dns-cache -4'
 ###############################################################
+# experimental Intel compiled optimisations 
+# when auto detect Intel based processors
+INTELOPT='y'
+
 # experimental custom RPM compiled packages to replace source 
 # compiled versions for 64bit systems only
 FPMRPM_LIBEVENT=n

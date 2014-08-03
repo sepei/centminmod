@@ -164,14 +164,15 @@ fi
     #tar xvfz nginx-${NGINX_VERSION}.tar.gz
     cd nginx-${NGINX_VERSION}
 
-if [ "$NGINX_OPENRESTY" == 'y' ]; then
-funct_nginxconfigure_openresty
-else
+set_intelflags
+
 funct_nginxconfigure
-fi
 
     time make$MAKETHREADS
     time make install
+
+unset_intelflags
+
     mimefix
     groupadd nginx
     useradd -g nginx -d /home/nginx -s /sbin/nologin nginx
