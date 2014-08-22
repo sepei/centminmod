@@ -4,7 +4,7 @@ NGINX_IPV='n' #NGINX IPV6 compile support for unattended mode only
 USEEDITOR='nano' # choice between nano or vim text editors for cmd shortcuts
 
 CUSTOMSERVERNAME='y'
-CUSTOMSERVERSTRING='nginx centmin sebutek'
+CUSTOMSERVERSTRING='nginx sebutek CMM'
 PHPFPMCONFDIR='/usr/local/nginx/conf/phpfpmd'
 
 UNATTENDED='y' # please leave at 'y' for best compatibility as at .07 release
